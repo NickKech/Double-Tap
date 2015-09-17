@@ -11,24 +11,24 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        if let scene = GameScene(fileNamed:"GameScene") {
-            // Configure the view.
+    
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            /* Configure the view */
             let skView = self.view as! SKView
-            skView.showsFPS = true
-            skView.showsNodeCount = true
+            
+            /* A boolean value that indicates whether the view displays the physics world */
+            skView.showsPhysics = false
             
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true
             
-            /* Set the scale mode to scale to fit the window */
+            /* Creates, configure and present the scene in the view */
+            let scene = GameScene(size: skView.bounds.size)
             scene.scaleMode = .AspectFill
-            
             skView.presentScene(scene)
         }
-    }
+    
 
     override func shouldAutorotate() -> Bool {
         return true

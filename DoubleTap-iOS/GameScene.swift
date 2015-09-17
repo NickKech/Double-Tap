@@ -63,7 +63,7 @@ class GameScene: SKScene {
 
     override func didMoveToView(view: SKView) {
         /* Add Background */
-       // addBackground()
+        addBackground()
         
         /* Create Game Board */
         createGameBoard(selectRandomCards())
@@ -75,14 +75,14 @@ class GameScene: SKScene {
     func addHUD() {
         scoreLabel.fontSize = 40
         scoreLabel.fontColor = SKColor.whiteColor()
-        scoreLabel.zPosition = 2
+        scoreLabel.zPosition = zOrderValue.Hud.rawValue
         scoreLabel.position = CGPointMake(size.width * 0.25, size.height - scoreLabel.fontSize)
         scoreLabel.text = "Score: \(score)"
         addChild(scoreLabel)
         
         timeLabel.fontSize = 40
         timeLabel.fontColor = SKColor.whiteColor()
-        timeLabel.zPosition = 2
+        timeLabel.zPosition = zOrderValue.Hud.rawValue
         timeLabel.position = CGPointMake(size.width * 0.75, size.height - timeLabel.fontSize)
         timeLabel.text = "Time: \(time)"
         addChild(timeLabel)
@@ -92,7 +92,8 @@ class GameScene: SKScene {
     
     func showMessage(imageNamed: String) {
         /* 1 */
-        let panel = SKSpriteNode(texture: SKTexture(imageNamed: imageNamed))
+        let panel = SKSpriteNode(texture: SKTexture(imageNamed: "\(imageNamed).png"))
+        panel.zPosition = zOrderValue.Message.rawValue
         panel.position = CGPointMake(size.width / 2, -size.height)
         panel.name = imageNamed
         addChild(panel)
@@ -104,13 +105,14 @@ class GameScene: SKScene {
 
     
     func createGameBoard(filenames: [String]) {
-        let backTexture = SKTexture(imageNamed: "back")
+        let backTexture = SKTexture(imageNamed: "back.png")
         
         var index = 0
         for row in 0 ..< numRows {
             for column in 0 ..< numColumns {
                 /* 1 */
                 let card = CardNode(texture: backTexture, row: row,  column: column, filename: filenames[index++])
+                card.zPosition = zOrderValue.Card.rawValue
                 card.name = "Card"
                 card.zPosition = 1
                 card.position = calculateCardsPosition(row, column: column, cardSize: card.size)
@@ -134,7 +136,7 @@ class GameScene: SKScene {
         /* 1 */
         var allCards =  [String]()
         for index in 0 ... totalCards {
-            allCards.append("card_\(index)")
+            allCards.append("card_\(index).png")
         }
         
         /* 2 */
@@ -177,9 +179,9 @@ class GameScene: SKScene {
     
     // MARK: - User Interface
     func addBackground() {
-        let background = SKSpriteNode(imageNamed: "Background")
+        let background = SKSpriteNode(imageNamed: "Background.png")
         background.name = "Background"
-        background.zPosition = 0
+        background.zPosition = zOrderValue.Background.rawValue
         background.position = CGPoint(x: CGRectGetMidX(frame), y: CGRectGetMidY(frame))
         addChild(background)
     }
@@ -216,6 +218,9 @@ class GameScene: SKScene {
         if !isGameOver {
             if let _ = childNodeWithName("Card") {
                 /* 2 */
+                return
+            } else {
+                /* 3 */
                 isGameOver = true
                 showMessage("LevelCompleted")
             }

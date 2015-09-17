@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D7CA2E01BA9F778006F6B2E /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7CA2DF1BA9F778006F6B2E /* Enumerations.swift */; settings = {ASSET_TAGS = (); }; };
 		9DB78E461B9CEB460008B924 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB78E451B9CEB460008B924 /* AppDelegate.swift */; };
 		9DB78E4C1B9CEB470008B924 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB78E4B1B9CEB470008B924 /* GameViewController.swift */; };
 		9DB78E4F1B9CEB470008B924 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DB78E4D1B9CEB470008B924 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D7CA2DF1BA9F778006F6B2E /* Enumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enumerations.swift; path = Sounds/Enumerations.swift; sourceTree = "<group>"; };
 		9DB78E421B9CEB460008B924 /* DoubleTap-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DoubleTap-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DB78E451B9CEB460008B924 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DB78E4B1B9CEB470008B924 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			children = (
 				9DB78E5F1B9CEC330008B924 /* Sounds */,
 				9DB78E5B1B9CEC110008B924 /* CardNode.swift */,
+				9D7CA2DF1BA9F778006F6B2E /* Enumerations.swift */,
 				9DB78E6A1B9CED530008B924 /* LabelNode.swift */,
 				9DB78E5D1B9CEC290008B924 /* GameScene.swift */,
 				9DB78E451B9CEB460008B924 /* AppDelegate.swift */,
@@ -176,6 +179,7 @@
 				9DB78E4C1B9CEB470008B924 /* GameViewController.swift in Sources */,
 				9DB78E5E1B9CEC290008B924 /* GameScene.swift in Sources */,
 				9DB78E461B9CEB460008B924 /* AppDelegate.swift in Sources */,
+				9D7CA2E01BA9F778006F6B2E /* Enumerations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +331,7 @@
 				9DB78E5A1B9CEB470008B924 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
