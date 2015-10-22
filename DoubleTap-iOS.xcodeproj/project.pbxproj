@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D7CA2E01BA9F778006F6B2E /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7CA2DF1BA9F778006F6B2E /* Enumerations.swift */; settings = {ASSET_TAGS = (); }; };
+		9D7CA2E01BA9F778006F6B2E /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7CA2DF1BA9F778006F6B2E /* Enumerations.swift */; };
 		9DB78E461B9CEB460008B924 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB78E451B9CEB460008B924 /* AppDelegate.swift */; };
 		9DB78E4C1B9CEB470008B924 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB78E4B1B9CEB470008B924 /* GameViewController.swift */; };
 		9DB78E4F1B9CEB470008B924 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DB78E4D1B9CEB470008B924 /* Main.storyboard */; };
 		9DB78E511B9CEB470008B924 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DB78E501B9CEB470008B924 /* Assets.xcassets */; };
 		9DB78E541B9CEB470008B924 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DB78E521B9CEB470008B924 /* LaunchScreen.storyboard */; };
-		9DB78E5C1B9CEC110008B924 /* CardNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB78E5B1B9CEC110008B924 /* CardNode.swift */; settings = {ASSET_TAGS = (); }; };
-		9DB78E5E1B9CEC290008B924 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB78E5D1B9CEC290008B924 /* GameScene.swift */; settings = {ASSET_TAGS = (); }; };
-		9DB78E651B9CEC340008B924 /* LevelCompleted.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DB78E601B9CEC330008B924 /* LevelCompleted.m4a */; settings = {ASSET_TAGS = (); }; };
-		9DB78E661B9CEC340008B924 /* MatchCardFailed.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DB78E611B9CEC340008B924 /* MatchCardFailed.m4a */; settings = {ASSET_TAGS = (); }; };
-		9DB78E671B9CEC340008B924 /* MatchCardSuccessed.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DB78E621B9CEC340008B924 /* MatchCardSuccessed.m4a */; settings = {ASSET_TAGS = (); }; };
-		9DB78E681B9CEC340008B924 /* Message.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DB78E631B9CEC340008B924 /* Message.m4a */; settings = {ASSET_TAGS = (); }; };
-		9DB78E691B9CEC340008B924 /* SelectCard.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DB78E641B9CEC340008B924 /* SelectCard.m4a */; settings = {ASSET_TAGS = (); }; };
-		9DB78E6B1B9CED530008B924 /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB78E6A1B9CED530008B924 /* LabelNode.swift */; settings = {ASSET_TAGS = (); }; };
+		9DB78E5C1B9CEC110008B924 /* CardNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB78E5B1B9CEC110008B924 /* CardNode.swift */; };
+		9DB78E5E1B9CEC290008B924 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB78E5D1B9CEC290008B924 /* GameScene.swift */; };
+		9DB78E651B9CEC340008B924 /* LevelCompleted.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DB78E601B9CEC330008B924 /* LevelCompleted.m4a */; };
+		9DB78E661B9CEC340008B924 /* MatchCardFailed.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DB78E611B9CEC340008B924 /* MatchCardFailed.m4a */; };
+		9DB78E671B9CEC340008B924 /* MatchCardSuccessed.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DB78E621B9CEC340008B924 /* MatchCardSuccessed.m4a */; };
+		9DB78E681B9CEC340008B924 /* Message.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DB78E631B9CEC340008B924 /* Message.m4a */; };
+		9DB78E691B9CEC340008B924 /* SelectCard.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DB78E641B9CEC340008B924 /* SelectCard.m4a */; };
+		9DB78E6B1B9CED530008B924 /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB78E6A1B9CED530008B924 /* LabelNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
