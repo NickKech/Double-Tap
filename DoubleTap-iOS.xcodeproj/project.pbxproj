@@ -21,6 +21,7 @@
 		9DB78E681B9CEC340008B924 /* Message.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DB78E631B9CEC340008B924 /* Message.m4a */; };
 		9DB78E691B9CEC340008B924 /* SelectCard.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9DB78E641B9CEC340008B924 /* SelectCard.m4a */; };
 		9DB78E6B1B9CED530008B924 /* LabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB78E6A1B9CED530008B924 /* LabelNode.swift */; };
+		9DDEC6381D66956F00AC0CC1 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDEC6371D66956F00AC0CC1 /* Library.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		9DB78E631B9CEC340008B924 /* Message.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Message.m4a; sourceTree = "<group>"; };
 		9DB78E641B9CEC340008B924 /* SelectCard.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SelectCard.m4a; sourceTree = "<group>"; };
 		9DB78E6A1B9CED530008B924 /* LabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelNode.swift; sourceTree = "<group>"; };
+		9DDEC6371D66956F00AC0CC1 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 		9DB78E441B9CEB460008B924 /* DoubleTap-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				9DDEC6371D66956F00AC0CC1 /* Library.swift */,
 				9DB78E5F1B9CEC330008B924 /* Sounds */,
 				9DB78E5B1B9CEC110008B924 /* CardNode.swift */,
 				9D7CA2DF1BA9F778006F6B2E /* Enumerations.swift */,
@@ -125,11 +128,13 @@
 		9DB78E3A1B9CEB450008B924 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Your Name";
 				TargetAttributes = {
 					9DB78E411B9CEB450008B924 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = SZX7GXAN23;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -175,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DB78E6B1B9CED530008B924 /* LabelNode.swift in Sources */,
+				9DDEC6381D66956F00AC0CC1 /* Library.swift in Sources */,
 				9DB78E5C1B9CEC110008B924 /* CardNode.swift in Sources */,
 				9DB78E4C1B9CEB470008B924 /* GameViewController.swift in Sources */,
 				9DB78E5E1B9CEC290008B924 /* GameScene.swift in Sources */,
@@ -292,11 +298,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SZX7GXAN23;
 				INFOPLIST_FILE = "DoubleTap-iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yourname.DoubleTap-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -304,11 +312,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SZX7GXAN23;
 				INFOPLIST_FILE = "DoubleTap-iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yourname.DoubleTap-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

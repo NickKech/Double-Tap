@@ -9,5 +9,5 @@ import SpriteKit
 
 // The drawing order of objects in z-axis (zPosition property)
 enum zOrderValue: CGFloat {
-    case Background, Card, Hud, Message
+    case background, card, hud, message
 }

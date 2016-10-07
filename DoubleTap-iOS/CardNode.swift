@@ -28,7 +28,7 @@ class CardNode: SKSpriteNode {
         self.backTexture = texture
         self.iconTexture = SKTexture(imageNamed: filename)
         
-        super.init(texture: texture, color: SKColor.whiteColor(), size: texture.size())
+        super.init(texture: texture, color: SKColor.white, size: texture.size())
     }
     
     /* 8 */
@@ -36,10 +36,10 @@ class CardNode: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func flip(completion:() -> ()) {
+    func flip(_ completion:@escaping () -> ()) {
         /* 1 */
-        let scaleDown = SKAction.scaleXTo(0, duration: 0.25)
-        let scaleUp = SKAction.scaleXTo(1.0, duration: 0.25)
+        let scaleDown = SKAction.scaleX(to: 0, duration: 0.25)
+        let scaleUp = SKAction.scaleX(to: 1.0, duration: 0.25)
        
         /* 2 */
         let backTextureAction = SKAction.setTexture(self.backTexture)
@@ -47,28 +47,28 @@ class CardNode: SKSpriteNode {
         
         /* 3 */
         if isFaceUp {
-            runAction(SKAction.sequence([scaleDown, backTextureAction, scaleUp]))
+            run(SKAction.sequence([scaleDown, backTextureAction, scaleUp]))
         } else {
-            runAction(SKAction.sequence([scaleDown, iconTextureAction, scaleUp]))
+            run(SKAction.sequence([scaleDown, iconTextureAction, scaleUp]))
         }
         isFaceUp = !isFaceUp
         
         /* 4 */
-        runAction(SKAction.waitForDuration(0.50), completion: completion)
+        run(SKAction.wait(forDuration: 0.50), completion: completion)
     }
     
     func remove() {
         /* 1 */
-        let scaleDown = SKAction.scaleTo(0, duration: 0.25)
+        let scaleDown = SKAction.scale(to: 0, duration: 0.25)
         /* 2 */
-        let rotate = SKAction.rotateByAngle(CGFloat(M_PI) * 2, duration: 0.25)
+        let rotate = SKAction.rotate(byAngle: CGFloat(M_PI) * 2, duration: 0.25)
         /* 3 */
         let remove = SKAction.removeFromParent()
         /* 4 */
         let group = SKAction.group([scaleDown, rotate])
         
         /* 5 */
-        runAction(SKAction.sequence([group, remove]))
+        run(SKAction.sequence([group, remove]))
     }
     
 }

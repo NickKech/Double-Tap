@@ -61,7 +61,7 @@ class GameScene: SKScene {
         }
     }
 
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         /* Add Background */
         addBackground()
         
@@ -74,55 +74,58 @@ class GameScene: SKScene {
     
     func addHUD() {
         scoreLabel.fontSize = 40
-        scoreLabel.fontColor = SKColor.whiteColor()
-        scoreLabel.zPosition = zOrderValue.Hud.rawValue
-        scoreLabel.position = CGPointMake(size.width * 0.25, size.height - scoreLabel.fontSize)
+        scoreLabel.fontColor = SKColor.white
+        scoreLabel.zPosition = zOrderValue.hud.rawValue
+        scoreLabel.position = CGPoint(x: size.width * 0.25, y: size.height - scoreLabel.fontSize)
         scoreLabel.text = "Score: \(score)"
         addChild(scoreLabel)
         
         timeLabel.fontSize = 40
-        timeLabel.fontColor = SKColor.whiteColor()
-        timeLabel.zPosition = zOrderValue.Hud.rawValue
-        timeLabel.position = CGPointMake(size.width * 0.75, size.height - timeLabel.fontSize)
+        timeLabel.fontColor = SKColor.white
+        timeLabel.zPosition = zOrderValue.hud.rawValue
+        timeLabel.position = CGPoint(x: size.width * 0.75, y: size.height - timeLabel.fontSize)
         timeLabel.text = "Time: \(time)"
         addChild(timeLabel)
     }
 
     // MARK: - Game States
     
-    func showMessage(imageNamed: String) {
+    func showMessage(_ imageNamed: String) {
         /* 1 */
         let panel = SKSpriteNode(texture: SKTexture(imageNamed: "\(imageNamed).png"))
-        panel.zPosition = zOrderValue.Message.rawValue
-        panel.position = CGPointMake(size.width / 2, -size.height)
+        panel.zPosition = zOrderValue.message.rawValue
+        panel.position = CGPoint(x: size.width / 2, y: -size.height)
         panel.name = imageNamed
         addChild(panel)
         
         /* 2 */
-        let move = SKAction.moveTo(CGPointMake(size.width / 2, size.height / 2), duration: 0.50)
-        panel.runAction(SKAction.sequence([soundMessage, move]))
+        let move = SKAction.move(to: CGPoint(x: size.width / 2, y: size.height / 2), duration: 0.50)
+        panel.run(SKAction.sequence([soundMessage, move]))
     }
 
     
-    func createGameBoard(filenames: [String]) {
+    func createGameBoard(_ filenames: [String]) {
         let backTexture = SKTexture(imageNamed: "back.png")
         
         var index = 0
         for row in 0 ..< numRows {
             for column in 0 ..< numColumns {
                 /* 1 */
-                let card = CardNode(texture: backTexture, row: row,  column: column, filename: filenames[index++])
-                card.zPosition = zOrderValue.Card.rawValue
+                
+                let card = CardNode(texture: backTexture, row: row,  column: column, filename: filenames[index])
+                card.zPosition = zOrderValue.card.rawValue
                 card.name = "Card"
                 card.zPosition = 1
                 card.position = calculateCardsPosition(row, column: column, cardSize: card.size)
                 /* 2 */
                 addChild(card)
+                
+                index += 1
             }
         }
     }
 
-    func calculateCardsPosition(row: Int, column: Int, cardSize: CGSize) -> CGPoint {
+    func calculateCardsPosition(_ row: Int, column: Int, cardSize: CGSize) -> CGPoint {
         let marginX = (size.width - cardSize.width * CGFloat(numColumns)) / 2
         let marginY = (size.height - cardSize.height * CGFloat(numRows)) / 2
         
@@ -150,7 +153,7 @@ class GameScene: SKScene {
             let filename = allCards[num]
             
             /* 4 */
-            allCards.removeAtIndex(num)
+            allCards.remove(at: num)
             
             /* 5 */
             selectedCards.append(filename)
@@ -172,7 +175,7 @@ class GameScene: SKScene {
     }
 
     // MARK: - Library
-    func random(min: UInt32, max: UInt32) -> Int {
+    func random(_ min: UInt32, max: UInt32) -> Int {
         return Int(arc4random_uniform(max - min) + min)
     }
 
@@ -181,8 +184,8 @@ class GameScene: SKScene {
     func addBackground() {
         let background = SKSpriteNode(imageNamed: "Background.png")
         background.name = "Background"
-        background.zPosition = zOrderValue.Background.rawValue
-        background.position = CGPoint(x: CGRectGetMidX(frame), y: CGRectGetMidY(frame))
+        background.zPosition = zOrderValue.background.rawValue
+        background.position = CGPoint(x: frame.midX, y: frame.midY)
         addChild(background)
     }
     
@@ -216,7 +219,7 @@ class GameScene: SKScene {
     func checkIfLevelCompleted() {
         /* 1 */
         if !isGameOver {
-            if let _ = childNodeWithName("Card") {
+            if let _ = childNode(withName: "Card") {
                 /* 2 */
                 return
             } else {
@@ -236,9 +239,9 @@ class GameScene: SKScene {
         if let card1 = firstSelectedCard, let card2 = secondSelectedCard {
             if card1.filename == card2.filename {
                 /* 2 */
-                runAction(soundMatchDone)
+                run(soundMatchDone)
                 /* 3 */
-                let block = SKAction.runBlock({
+                let block = SKAction.run({
                     card1.remove()
                     card2.remove()
                     self.firstSelectedCard = nil
@@ -246,10 +249,10 @@ class GameScene: SKScene {
                     self.enableTouches = true
                 })
                 
-                let delay = SKAction.waitForDuration(1.0)
+                let delay = SKAction.wait(forDuration: 1.0)
                 let sequence = SKAction.sequence([block, delay])
                     
-                    runAction(sequence, completion: {
+                    run(sequence, completion: {
                         /* Checks if level completed */
                         self.checkIfLevelCompleted()
 
@@ -258,7 +261,7 @@ class GameScene: SKScene {
                 updateScore()
             } else {
                 /* 5 */
-                runAction(soundMatchFailed)
+                run(soundMatchFailed)
                 self.firstSelectedCard = nil
                  self.secondSelectedCard = nil
                 /* 6 */
@@ -277,7 +280,7 @@ class GameScene: SKScene {
     
     
     
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         /* Called before each frame is rendered */
         /* 1 */
         if isGameOver {
@@ -287,7 +290,7 @@ class GameScene: SKScene {
         /* 2 */
         if timedt + 1 < currentTime {
             timedt = currentTime;
-            time--;
+            time -= 1
             
             /* 3 */
             if time <= 0 {
@@ -300,17 +303,17 @@ class GameScene: SKScene {
     
     
    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-    let location = touches.first?.locationInNode(self)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    let location = touches.first?.location(in: self)
         /* New Game */
-        let gameOver = childNodeWithName("GameOver")
+        let gameOver = childNode(withName: "GameOver")
         if gameOver != nil {
             newGame()
             return
         }
         
         /* Level Completed */
-        let levelCompleted = childNodeWithName("LevelCompleted")
+        let levelCompleted = childNode(withName: "LevelCompleted")
         if levelCompleted != nil {
             nextLevel()
             return
@@ -321,10 +324,10 @@ class GameScene: SKScene {
             return
         }
         
-        let node = nodeAtPoint(location!)
+        let node = atPoint(location!)
         if node.name == "Card" {
             /* 4 */
-            runAction(soundSelect)
+            run(soundSelect)
             let card = node as! CardNode
             if !card.isFaceUp {
                 if firstSelectedCard == nil {
@@ -346,11 +349,11 @@ class GameScene: SKScene {
 
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
     
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
     
     }
     
