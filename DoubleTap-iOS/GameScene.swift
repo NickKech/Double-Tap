@@ -66,7 +66,7 @@ class GameScene: SKScene {
         addBackground()
         
         /* Create Game Board */
-        createGameBoard(selectRandomCards())
+        createGameBoard(filenames: selectRandomCards())
         
         /* Add HUD */
         addHUD()
@@ -90,7 +90,7 @@ class GameScene: SKScene {
 
     // MARK: - Game States
     
-    func showMessage(_ imageNamed: String) {
+    func showMessage(imageNamed: String) {
         /* 1 */
         let panel = SKSpriteNode(texture: SKTexture(imageNamed: "\(imageNamed).png"))
         panel.zPosition = zOrderValue.message.rawValue
@@ -104,7 +104,7 @@ class GameScene: SKScene {
     }
 
     
-    func createGameBoard(_ filenames: [String]) {
+    func createGameBoard(filenames: [String]) {
         let backTexture = SKTexture(imageNamed: "back.png")
         
         var index = 0
@@ -116,7 +116,7 @@ class GameScene: SKScene {
                 card.zPosition = zOrderValue.card.rawValue
                 card.name = "Card"
                 card.zPosition = 1
-                card.position = calculateCardsPosition(row, column: column, cardSize: card.size)
+                card.position = calculateCardsPosition(row: row, column: column, cardSize: card.size)
                 /* 2 */
                 addChild(card)
                 
@@ -125,7 +125,7 @@ class GameScene: SKScene {
         }
     }
 
-    func calculateCardsPosition(_ row: Int, column: Int, cardSize: CGSize) -> CGPoint {
+    func calculateCardsPosition(row: Int, column: Int, cardSize: CGSize) -> CGPoint {
         let marginX = (size.width - cardSize.width * CGFloat(numColumns)) / 2
         let marginY = (size.height - cardSize.height * CGFloat(numRows)) / 2
         
@@ -149,7 +149,7 @@ class GameScene: SKScene {
         for _ in 0 ..< numberOfCardsInBoard {
             
             /* 3 */
-            let num = random(0, max: UInt32(allCards.count))
+            let num = random(min: 0, max: UInt32(allCards.count))
             let filename = allCards[num]
             
             /* 4 */
@@ -162,8 +162,8 @@ class GameScene: SKScene {
         
         /* 6 */
         for _ in 0 ..< selectedCards.count {
-            let num1 = random(0, max: UInt32(selectedCards.count))
-            let num2 = random(0, max: UInt32(selectedCards.count))
+            let num1 = random(min: 0, max: UInt32(selectedCards.count))
+            let num2 = random(min: 0, max: UInt32(selectedCards.count))
             
             let temp = selectedCards[num1]
             selectedCards[num1] = selectedCards[num2]
@@ -175,7 +175,7 @@ class GameScene: SKScene {
     }
 
     // MARK: - Library
-    func random(_ min: UInt32, max: UInt32) -> Int {
+    func random(min: UInt32, max: UInt32) -> Int {
         return Int(arc4random_uniform(max - min) + min)
     }
 
@@ -196,7 +196,7 @@ class GameScene: SKScene {
         secondSelectedCard = nil
         enableTouches = true
         isGameOver = false
-        createGameBoard(selectRandomCards())
+        createGameBoard(filenames: selectRandomCards())
         addHUD()
         score = 0
         time  = 60
@@ -210,7 +210,7 @@ class GameScene: SKScene {
         secondSelectedCard = nil
         enableTouches = true
         isGameOver = false
-        createGameBoard(selectRandomCards())
+        createGameBoard(filenames: selectRandomCards())
         addHUD()
         time  = 60
         timedt = 0
@@ -225,7 +225,7 @@ class GameScene: SKScene {
             } else {
                 /* 3 */
                 isGameOver = true
-                showMessage("LevelCompleted")
+                showMessage(imageNamed: "LevelCompleted")
             }
         }
     }
@@ -294,7 +294,7 @@ class GameScene: SKScene {
             
             /* 3 */
             if time <= 0 {
-                showMessage("GameOver")
+                showMessage(imageNamed: "GameOver")
                 isGameOver = true
             }
         }

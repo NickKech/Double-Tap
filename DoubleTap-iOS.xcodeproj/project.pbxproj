@@ -133,7 +133,6 @@
 				TargetAttributes = {
 					9DB78E411B9CEB450008B924 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = SZX7GXAN23;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -298,7 +297,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = SZX7GXAN23;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "DoubleTap-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -312,7 +311,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = SZX7GXAN23;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "DoubleTap-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

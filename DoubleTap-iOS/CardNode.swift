@@ -36,7 +36,7 @@ class CardNode: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func flip(_ completion:@escaping () -> ()) {
+    func flip(completion:@escaping () -> ()) {
         /* 1 */
         let scaleDown = SKAction.scaleX(to: 0, duration: 0.25)
         let scaleUp = SKAction.scaleX(to: 1.0, duration: 0.25)
